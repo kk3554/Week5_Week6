@@ -1,31 +1,36 @@
-// Multiplication table using array
+// Store numbers until 0 or negative & find sum
 import java.util.Scanner;
 
-class MultiplicationTable {
+class SumUntilStop {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter a number: ");
-        int number = input.nextInt();
+        int maxSize = 10;
+        double[] numbers = new double[maxSize];
 
-        if (number <= 0) {
-            System.err.println("Invalid input!");
-            System.exit(0);
+        int index = 0;
+        double sum = 0;
+
+        while (true) {
+
+            if (index == maxSize) break;
+
+            System.out.print("Enter number: ");
+            double value = input.nextDouble();
+
+            if (value <= 0) break;
+
+            numbers[index] = value;
+            index++;
         }
 
-        int size = 10;
-        int[] table = new int[size];
-
-        // Store values
-        for (int i = 0; i < table.length; i++) {
-            table[i] = number * (i + 1);
+        // Calculate sum
+        for (int i = 0; i < index; i++) {
+            sum += numbers[i];
         }
 
-        // Display
-        for (int i = 0; i < table.length; i++) {
-            System.out.println(number + " * " + (i + 1) + " = " + table[i]);
-        }
+        System.out.println("Total Sum = " + sum);
 
         input.close();
     }
